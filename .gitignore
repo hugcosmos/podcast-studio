@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+server/public
+
+# Environment variables - NEVER commit these!
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+
+# Generated content
+podcasts/*.mp3
+podcasts/*.json
+!podcasts/.gitkeep
+
+# Backup files
+vite.config.ts.*
+*.tar.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  podcast-studio:
+    build: .
+    image: podcast-studio:latest
+    container_name: podcast-studio
+    ports:
+      - "8000:8000"
+    environment:
+      # Required: your Perplexity API key
+      - PPLX_API_KEY=${PPLX_API_KEY}
+      - RUNNING_IN_DOCKER=true
+    restart: unless-stopped
+    volumes:
+      # Persist generated podcasts to local directory
+      - ./podcasts:/app/podcasts
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

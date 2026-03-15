@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+*.log
+podcasts
+
+# Ignore sensitive env files
+.env
+.env.*
+!.env.example
+# Do not add secrets or keys in this file
+*secret*
+*key*

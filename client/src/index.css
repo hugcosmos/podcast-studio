@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Podcast Studio — deep charcoal + violet accent */
+    --background: 220 15% 8%;
+    --foreground: 220 15% 92%;
+
+    --card: 220 13% 12%;
+    --card-foreground: 220 15% 92%;
+
+    --popover: 220 13% 12%;
+    --popover-foreground: 220 15% 92%;
+
+    --primary: 255 75% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 12% 18%;
+    --secondary-foreground: 220 15% 80%;
+
+    --muted: 220 12% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 255 50% 25%;
+    --accent-foreground: 255 80% 85%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 20%;
+    --input: 220 12% 15%;
+    --ring: 255 75% 65%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 15% 7%;
+    --sidebar-foreground: 220 15% 85%;
+    --sidebar-primary: 255 75% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 12% 14%;
+    --sidebar-accent-foreground: 220 15% 85%;
+    --sidebar-border: 220 12% 16%;
+    --sidebar-ring: 255 75% 65%;
+
+    /* Chart colors for speaker palette */
+    --chart-1: 255 75% 65%;
+    --chart-2: 195 70% 55%;
+    --chart-3: 35 80% 55%;
+    --chart-4: 280 50% 60%;
+    --chart-5: 160 50% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+    text-wrap: balance;
+    line-height: 1.2;
+  }
+}
+
+/* Waveform animation for playing state */
+@keyframes wave-bar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+
+.wave-bar {
+  animation: wave-bar 0.8s ease-in-out infinite;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* Pulse glow for generating state */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(140, 100, 255, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(140, 100, 255, 0.5); }
+}
+
+.generating-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Scroll area override */
+.scroll-area-viewport {
+  max-height: 100%;
+}
+
+/* Audio player track */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  height: 4px;
+  border-radius: 2px;
+  background: hsl(230 15% 25%);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: hsl(255 75% 65%);
+  margin-top: -5px;
+  box-shadow: 0 0 6px rgba(140, 100, 255, 0.5);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+}
+
+/* Participant card input styles — use card's color for focus */
+.participant-input {
+  border-color: color-mix(in hsl, var(--participant-color) 27%, transparent) !important;
+}
+.participant-input:focus,
+.participant-input:focus-visible,
+.participant-input[data-state="open"] {
+  border-color: var(--participant-color) !important;
+  box-shadow: 0 0 0 1px var(--participant-color), 0 0 0 3px color-mix(in hsl, var(--participant-color) 20%, transparent) !important;
+  outline: none !important;
+  --ring: var(--participant-color);
+}
+
+.participant-select-trigger {
+  border-color: color-mix(in hsl, var(--participant-color) 27%, transparent) !important;
+}
+.participant-select-trigger:focus,
+.participant-select-trigger[data-state="open"] {
+  border-color: var(--participant-color) !important;
+  box-shadow: 0 0 0 1px var(--participant-color), 0 0 0 3px color-mix(in hsl, var(--participant-color) 20%, transparent) !important;
+  outline: none !important;
+  --ring: var(--participant-color);
+}
+
+.participant-textarea {
+  border-color: color-mix(in hsl, var(--participant-color) 27%, transparent) !important;
+}
+.participant-textarea:focus {
+  border-color: var(--participant-color) !important;
+  box-shadow: 0 0 0 1px var(--participant-color), 0 0 0 3px color-mix(in hsl, var(--participant-color) 20%, transparent) !important;
+  outline: none !important;
+  --ring: var(--participant-color);
+}
+
+/* Participant select item — highlight selected with card color */
+.participant-select-item[data-state="checked"] {
+  background-color: color-mix(in hsl, var(--participant-color) 15%, transparent) !important;
+  color: var(--participant-color) !important;
+}
