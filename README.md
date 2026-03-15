@@ -209,3 +209,23 @@ pkill -f "api_server.py"
 │  └─────────────────────────────────┘   │
 └─────────────────────────────────────────┘
 ```
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Security Note
+
+⚠️ **Never commit your `.env` file or API keys to version control.**
+
+The `.gitignore` file is configured to exclude:
+- `.env` files (contains your `PPLX_API_KEY`)
+- `node_modules/` (dependencies)
+- `dist/` (build output)
+- Generated podcast files (`podcasts/*.mp3`)
+
+When deploying, always set your API key via environment variables or a secure secrets management system.
