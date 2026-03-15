@@ -2,6 +2,8 @@
 
 AI-powered podcast episode generator. Enter a topic, configure your host and guests, and get a fully voiced MP3 episode with a grounded script — in under 2 minutes.
 
+![Podcast Studio Screenshot](assets/screenshot.png)
+
 ## How It Works
 
 1. **News search** — Perplexity Sonar API fetches the latest news on your topic
