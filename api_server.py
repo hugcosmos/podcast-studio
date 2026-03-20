@@ -27,10 +27,10 @@ import httpx
 import edge_tts
 
 try:
-    from mutagen.mp3 import MP3
-    MUTAGEN_AVAILABLE = True
+    from tinytag import TinyTag
+    TINYTAG_AVAILABLE = True
 except ImportError:
-    MUTAGEN_AVAILABLE = False
+    TINYTAG_AVAILABLE = False
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
@@ -480,10 +480,11 @@ async def synthesize_turn(text: str, voice: str, output_path: str) -> None:
 
 
 def get_audio_duration(path: str) -> float:
-    """Get audio duration in seconds using mutagen or ffmpeg fallback."""
-    if MUTAGEN_AVAILABLE:
+    """Get audio duration in seconds using tinytag or ffmpeg fallback."""
+    if TINYTAG_AVAILABLE:
         try:
-            return MP3(path).info.length
+            tag = TinyTag.get(path)
+            return tag.duration or 0.0
         except Exception:
             pass
     # Fallback: use ffprobe

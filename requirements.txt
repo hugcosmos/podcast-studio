@@ -3,5 +3,5 @@ uvicorn[standard]==0.30.6
 httpx==0.27.2
 edge-tts==7.2.7
 pydantic==2.9.2
-mutagen==1.47.0
+tinytag==2.2.1
 python-dotenv==1.0.1

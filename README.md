@@ -218,6 +218,23 @@ pkill -f "api_server.py"
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+### Third-Party Dependencies
+
+| Dependency | License | Purpose |
+|---|---|---|
+| [edge-tts](https://github.com/rany2/edge-tts) | LGPLv3 | Voice synthesis |
+| [fastapi](https://github.com/fastapi/fastapi) | MIT | Web framework |
+| [uvicorn](https://github.com/encode/uvicorn) | BSD-3-Clause | ASGI server |
+| [httpx](https://github.com/encode/httpx) | MIT/BSD | HTTP client |
+| [pydantic](https://github.com/pydantic/pydantic) | MIT | Data validation |
+| [tinytag](https://github.com/tinytag/tinytag) | MIT | Audio metadata |
+| [python-dotenv](https://github.com/theskumar/python-dotenv) | BSD | Environment variables |
+
+### Important Notes
+
+- **edge-tts (LGPLv3)**: Used as an external library without modification. Under LGPLv3, this project can maintain its MIT License since we only call/link to edge-tts as a dependency without modifying its source code.
+- **Microsoft Edge TTS**: This is an unofficial interface to Microsoft's speech service. Use in production or commercial contexts may be subject to Microsoft's Terms of Service. For commercial deployments, consider using officially licensed TTS services like Azure Speech Services or Google Cloud Text-to-Speech.
+
 ---
 
 ## Security Note
