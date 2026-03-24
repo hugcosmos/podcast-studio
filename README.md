@@ -213,6 +213,13 @@ pkill -f "api_server.py"
 ```
 
 ---
+## ToDo
+
+- Decouple the script generation from Perplexity Sonar API
+
+- Add local small model integration option
+
+---
 
 ## License
 
